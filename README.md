@@ -1,51 +1,53 @@
-# 🏠 Tenant Management System
+🏠 Tenant Management System
 
-A complete web-based application for managing rental properties, tenants, leases, payments, and documents.
+A complete web-based application for managing rental properties, tenants, leases, payments, and documents. Perfect for property managers to streamline operations and track tenants efficiently.
 
-## 📋 Features
+📋 Features
 
-- ✅ **Dashboard** - Overview of tenants, properties, revenue, and alerts
-- 👥 **Tenant Management** - Add, view, and manage tenant information
-- 🏢 **Property Management** - Track apartments, rooms, and availability
-- 📝 **Lease Management** - Create and monitor lease agreements
-- 💰 **Payment Tracking** - Record and view payment history
-- 📄 **Document Storage** - Upload and manage signatory files
-- 🔔 **Automated Reminders** - Rent due and lease expiry notifications
+✅ Dashboard – Overview of tenants, properties, revenue, and alerts
 
-## 🚀 Getting Started
+👥 Tenant Management – Add, view, and manage tenant information
 
-### Prerequisites
+🏢 Property Management – Track apartments, rooms, and availability
 
-You need to have **Node.js** installed on your computer.
+📝 Lease Management – Create and monitor lease agreements
 
-**Download Node.js here:** https://nodejs.org/ (Choose the LTS version)
+💰 Payment Tracking – Record and view payment history
 
-### Installation Steps
+📄 Document Storage – Upload and manage signatory files
 
-1. **Open VSCode** and open the `tenant-management-app` folder
+🔔 Automated Reminders – Rent due and lease expiry notifications
 
-2. **Open Terminal in VSCode** (Menu: Terminal > New Terminal)
+🚀 Getting Started
+Prerequisites
 
-3. **Install dependencies** (Run this command in terminal):
-   ```bash
-   npm install
-   ```
+Node.js (LTS version recommended)
+Download Node.js here
 
-4. **Start the application** (Run this command):
-   ```bash
-   npm start
-   ```
+Installation Steps
 
-5. **Open your browser** and go to:
-   ```
-   http://localhost:3000
-   ```
+Open VSCode and open the tenant-management-app folder
 
-That's it! Your application is now running! 🎉
+Open a terminal (Menu → Terminal → New Terminal)
 
-## 📁 Project Structure
+Install dependencies:
 
-```
+npm install
+
+
+Start the application:
+
+npm start
+
+
+Open your browser and go to:
+
+http://localhost:3000
+
+
+Your application should now be running! 🎉
+
+📁 Project Structure
 tenant-management-app/
 ├── server.js              # Backend server (Database + API)
 ├── package.json           # Project dependencies
@@ -56,158 +58,135 @@ tenant-management-app/
 │   │   └── style.css      # Styling
 │   └── js/
 │       └── app.js         # Frontend logic
-└── uploads/               # Uploaded documents folder
-```
+└── uploads/               # Uploaded documents
 
-## 🎨 Customization Guide
+🎨 Customization
+Change Company Name
 
-### Change Company Name
+File: public/index.html
 
-**File:** `public/index.html` (Line 8)
-```html
 <title>Your Company Name - Tenant Management</title>
-```
-
-**File:** `public/index.html` (Line 14)
-```html
 <h1>🏠 Your Company Name</h1>
-```
 
-### Change Colors
+Change Colors
 
-**File:** `public/css/style.css`
+File: public/css/style.css
 
-Find these lines and change the colors:
-```css
-/* Line 8 - Main gradient colors */
+/* Main gradient colors */
 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 
-/* Change to your colors (use hex codes like #FF5733) */
-background: linear-gradient(135deg, #YOUR_COLOR_1 0%, #YOUR_COLOR_2 100%);
-```
 
-**Color generator tool:** https://cssgradient.io/
+Use your preferred hex codes (e.g., #FF5733). Color tool: CSS Gradient
 
-### Change Server Port
+Change Server Port
 
-**File:** `server.js` (Line 12)
-```javascript
-const PORT = 3000;  // Change to any number like 8080, 5000, etc.
-```
+File: server.js
 
-### Add Your Logo
+const PORT = 3000; // Change to any port (8080, 5000, etc.)
 
-1. Put your logo image in `public/` folder
-2. **Edit:** `public/index.html` (Line 14)
-```html
+Add Your Logo
+
+Place logo in public/ folder
+
+Update in index.html:
+
 <h1><img src="your-logo.png" width="50"> Your Company Name</h1>
-```
 
-## 💾 Database Information
+💾 Database
 
-The database file `tenant_management.db` stores all your data. 
+Database file: tenant_management.db
 
-**To backup your data:**
-- Simply copy the `tenant_management.db` file to a safe location
+Backup: Copy the file to a safe location
 
-**To restore backup:**
-- Replace `tenant_management.db` with your backup file
+Restore: Replace with backup file
 
-**To reset/start fresh:**
-- Delete `tenant_management.db` file
-- Restart the application (it will create a new empty database)
+Reset: Delete the file; app will auto-create a new database
 
-## 📱 Usage Guide
+📱 Usage Guide
+Adding a Tenant
 
-### Adding a Tenant
-1. Click **"Tenants"** tab
-2. Click **"+ Add Tenant"** button
-3. Fill in the form
-4. Click **"Save Tenant"**
+Click Tenants tab
 
-### Adding a Property
-1. Click **"Properties"** tab
-2. Click **"+ Add Property"** button
-3. Fill in property details
-4. Click **"Save Property"**
+Click + Add Tenant
 
-### Creating a Lease
-1. Click **"Leases"** tab
-2. Click **"+ Create Lease"** button
-3. Select tenant and property
-4. Set start/end dates and rent amount
-5. Click **"Create Lease"**
+Fill form → Save Tenant
 
-### Recording a Payment
-1. Click **"Payments"** tab
-2. Click **"+ Record Payment"** button
-3. Select the lease
-4. Enter payment details
-5. Click **"Record Payment"**
+Adding a Property
 
-### Uploading Documents
-1. Click **"Documents"** tab
-2. Click **"+ Upload Document"** button
-3. Select tenant/lease (optional)
-4. Choose document type
-5. Select file and click **"Upload Document"**
+Click Properties tab
 
-### Setting Up Reminders
-1. Click **"Reminders"** tab
-2. Click **"🔄 Generate Reminders"** button
-3. View upcoming reminders
-4. Mark as sent when you contact tenants
+Click + Add Property
 
-## 🔧 Troubleshooting
+Fill details → Save Property
 
-### Error: "Port 3000 is already in use"
-**Solution:** Change the port number in `server.js` to 3001 or 8080
+Creating a Lease
 
-### Error: "Cannot find module"
-**Solution:** Run `npm install` again in the terminal
+Click Leases tab
 
-### Database not saving data
-**Solution:** Check if you have write permissions in the folder
+Click + Create Lease
 
-### Can't access from another computer
-**Solution:** 
-1. Find your computer's IP address
-2. Change `server.js` line to: `app.listen(PORT, '0.0.0.0')`
-3. Access from other computers using: `http://YOUR_IP:3000`
+Select tenant & property, set dates & rent → Create Lease
 
-## 📞 How to Stop the Server
+Recording a Payment
 
-Press `Ctrl + C` in the terminal where the server is running
+Click Payments tab
 
-## 🔒 Security Notes
+Click + Record Payment
 
-- This is a local application (only accessible on your computer by default)
-- Database is stored locally in `tenant_management.db`
-- Upload files are stored in the `uploads/` folder
-- For production use, add authentication and use HTTPS
+Select lease → Enter details → Record Payment
 
-## 📝 Notes
+Uploading Documents
 
-- All dates are in format: YYYY-MM-DD (2024-01-15)
-- Amounts are in decimal format (1500.50)
-- Reminders auto-generate for rent due dates and lease expiry
-- Documents can be PDF, images, or any file type
+Click Documents tab
 
-## 🆘 Need Help?
+Click + Upload Document
 
-If you encounter any issues:
-1. Check the terminal for error messages
-2. Make sure Node.js is installed: `node --version`
-3. Ensure all files are in the correct folders
-4. Try deleting `node_modules` folder and run `npm install` again
+Select tenant/lease → Choose file → Upload Document
 
-## 📚 Tech Stack
+Setting Up Reminders
 
-- **Backend:** Node.js + Express
-- **Database:** SQLite3
-- **Frontend:** HTML, CSS, JavaScript
-- **File Upload:** Multer
+Click Reminders tab
 
----
+Click 🔄 Generate Reminders
 
-**Made with ❤️ for property managers**
+View and mark reminders as sent
+
+🔧 Troubleshooting
+
+Port 3000 in use: Change port in server.js
+
+Cannot find module: Run npm install
+
+Database not saving: Ensure write permissions
+
+Access from another computer:
+
+Set app.listen(PORT, '0.0.0.0') in server.js
+
+Use http://YOUR_IP:3000
+
+Stop Server
+
+Press Ctrl + C in terminal
+
+🔒 Security Notes
+
+Local app (default localhost access)
+
+Database: tenant_management.db
+
+Uploads stored in uploads/
+
+For production: add authentication + HTTPS
+
+📚 Tech Stack
+
+Backend: Node.js + Express
+
+Database: SQLite3
+
+Frontend: HTML, CSS, JavaScript
+
+File Uploads: Multer
+
+Made with ❤️ for property managers
