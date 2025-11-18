@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenant Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏠 Tenant Management System</h1>
+            <p class="subtitle">Manage your properties, tenants, and payments efficiently</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="dashboard">📊 Dashboard</button>
+            <button class="nav-tab" data-tab="tenants">👥 Tenants</button>
+            <button class="nav-tab" data-tab="properties">🏢 Properties</button>
+            <button class="nav-tab" data-tab="leases">📝 Leases</button>
+            <button class="nav-tab" data-tab="payments">💰 Payments</button>
+            <button class="nav-tab" data-tab="documents">📄 Documents</button>
+            <button class="nav-tab" data-tab="reminders">🔔 Reminders</button>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="tab-content active">
+            <h2>Dashboard Overview</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3 id="stat-tenants">0</h3>
+                        <p>Active Tenants</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-info">
+                        <h3 id="stat-properties">0</h3>
+                        <p>Available Properties</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-info">
+                        <h3 id="stat-revenue">$0</h3>
+                        <p>Monthly Revenue</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-info">
+                        <h3 id="stat-expiring">0</h3>
+                        <p>Expiring Leases</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-section">
+                <h3>Upcoming Reminders</h3>
+                <div id="upcoming-reminders" class="reminders-list"></div>
+            </div>
+        </div>
+
+        <!-- Tenants Tab -->
+        <div id="tenants" class="tab-content">
+            <div class="section-header">
+                <h2>Tenants</h2>
+                <button class="btn btn-primary" onclick="showAddTenantForm()">+ Add Tenant</button>
+            </div>
+            
+            <div id="tenant-form" class="form-container" style="display: none;">
+                <h3>Add New Tenant</h3>
+                <form id="add-tenant-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name *</label>
+                            <input type="text" name="first_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name *</label>
+                            <input type="text" name="last_name" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>National ID</label>
+                            <input type="text" name="national_id">
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input type="date" name="date_of_birth">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="occupation">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Emergency Contact Name</label>
+                            <input type="text" name="emergency_contact_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Emergency Contact Phone</label>
+                            <input type="tel" name="emergency_contact_phone">
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Tenant</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddTenantForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="tenants-list" class="data-table"></div>
+        </div>
+
+        <!-- Properties Tab -->
+        <div id="properties" class="tab-content">
+            <div class="section-header">
+                <h2>Properties</h2>
+                <button class="btn btn-primary" onclick="showAddPropertyForm()">+ Add Property</button>
+            </div>
+            
+            <div id="property-form" class="form-container" style="display: none;">
+                <h3>Add New Property</h3>
+                <form id="add-property-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Property Name *</label>
+                            <input type="text" name="property_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Property Type *</label>
+                            <select name="property_type" required>
+                                <option value="">Select Type</option>
+                                <option value="apartment">Apartment</option>
+                                <option value="room">Room</option>
+                                <option value="studio">Studio</option>
+                                <option value="house">House</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Address *</label>
+                            <input type="text" name="address" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city">
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <input type="text" name="state">
+                        </div>
+                        <div class="form-group">
+                            <label>Room Number</label>
+                            <input type="text" name="room_number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Bedrooms</label>
+                            <input type="number" name="bedrooms" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label>Bathrooms</label>
+                            <input type="number" name="bathrooms" min="0" step="0.5">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Monthly Rent *</label>
+                            <input type="number" name="monthly_rent" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Security Deposit</label>
+                            <input type="number" name="security_deposit" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Amenities</label>
+                            <textarea name="amenities" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Property</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddPropertyForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="properties-list" class="data-table"></div>
+        </div>
+
+        <!-- Leases Tab -->
+        <div id="leases" class="tab-content">
+            <div class="section-header">
+                <h2>Leases</h2>
+                <button class="btn btn-primary" onclick="showAddLeaseForm()">+ Create Lease</button>
+            </div>
+            
+            <div id="lease-form" class="form-container" style="display: none;">
+                <h3>Create New Lease</h3>
+                <form id="add-lease-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tenant *</label>
+                            <select name="tenant_id" id="lease-tenant-select" required>
+                                <option value="">Select Tenant</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Property *</label>
+                            <select name="property_id" id="lease-property-select" required>
+                                <option value="">Select Property</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Start Date *</label>
+                            <input type="date" name="lease_start_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date *</label>
+                            <input type="date" name="lease_end_date" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Rent Amount *</label>
+                            <input type="number" name="rent_amount" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Security Deposit Paid</label>
+                            <input type="number" name="security_deposit_paid" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Due Day</label>
+                            <input type="number" name="payment_due_day" min="1" max="31" value="1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Terms & Conditions</label>
+                            <textarea name="terms_conditions" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Create Lease</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddLeaseForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="leases-list" class="data-table"></div>
+        </div>
+
+        <!-- Payments Tab -->
+        <div id="payments" class="tab-content">
+            <div class="section-header">
+                <h2>Payments</h2>
+                <button class="btn btn-primary" onclick="showAddPaymentForm()">+ Record Payment</button>
+            </div>
+            
+            <div id="payment-form" class="form-container" style="display: none;">
+                <h3>Record Payment</h3>
+                <form id="add-payment-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Lease *</label>
+                            <select name="lease_id" id="payment-lease-select" required onchange="updatePaymentTenant()">
+                                <option value="">Select Lease</option>
+                            </select>
+                        </div>
+                        <input type="hidden" name="tenant_id" id="payment-tenant-id">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Payment Date *</label>
+                            <input type="date" name="payment_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Amount Paid *</label>
+                            <input type="number" name="amount_paid" step="0.01" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Period Start *</label>
+                            <input type="date" name="payment_period_start" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Period End *</label>
+                            <input type="date" name="payment_period_end" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Payment Method *</label>
+                            <select name="payment_method" required>
+                                <option value="">Select Method</option>
+                                <option value="cash">Cash</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="check">Check</option>
+                                <option value="credit_card">Credit Card</option>
+                                <option value="mobile_payment">Mobile Payment</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Transaction Reference</label>
+                            <input type="text" name="transaction_reference">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Notes</label>
+                            <textarea name="notes" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Record Payment</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideAddPaymentForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="payments-list" class="data-table"></div>
+        </div>
+
+        <!-- Documents Tab -->
+        <div id="documents" class="tab-content">
+            <div class="section-header">
+                <h2>Documents</h2>
+                <button class="btn btn-primary" onclick="showUploadDocumentForm()">+ Upload Document</button>
+            </div>
+            
+            <div id="document-form" class="form-container" style="display: none;">
+                <h3>Upload Document</h3>
+                <form id="upload-document-form" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tenant</label>
+                            <select name="tenant_id" id="doc-tenant-select">
+                                <option value="">Select Tenant (Optional)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Lease</label>
+                            <select name="lease_id" id="doc-lease-select">
+                                <option value="">Select Lease (Optional)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Document Type *</label>
+                            <select name="document_type" required>
+                                <option value="">Select Type</option>
+                                <option value="lease_agreement">Lease Agreement</option>
+                                <option value="id_copy">ID Copy</option>
+                                <option value="payment_receipt">Payment Receipt</option>
+                                <option value="termination_notice">Termination Notice</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Description</label>
+                            <textarea name="description" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label>Choose File *</label>
+                            <input type="file" name="document" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Upload Document</button>
+                        <button type="button" class="btn btn-secondary" onclick="hideUploadDocumentForm()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="documents-list" class="data-table"></div>
+        </div>
+
+        <!-- Reminders Tab -->
+        <div id="reminders" class="tab-content">
+            <div class="section-header">
+                <h2>Reminders</h2>
+                <button class="btn btn-primary" onclick="generateReminders()">🔄 Generate Reminders</button>
+            </div>
+            <div id="reminders-list" class="data-table"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

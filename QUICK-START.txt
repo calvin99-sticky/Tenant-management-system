@@ -1,0 +1,107 @@
+🏠 TENANT MANAGEMENT SYSTEM - QUICK START GUIDE
+================================================
+
+📥 STEP 1: INSTALL NODE.JS
+-------------------------
+1. Go to: https://nodejs.org/
+2. Download the LTS version (recommended)
+3. Run the installer
+4. Follow the installation wizard
+5. Restart your computer after installation
+
+
+📂 STEP 2: OPEN THE PROJECT IN VSCODE
+--------------------------------------
+1. Open VSCode
+2. Click: File > Open Folder
+3. Select the "tenant-management-app" folder
+4. Click "Select Folder"
+
+
+⚙️ STEP 3: INSTALL DEPENDENCIES
+--------------------------------
+1. In VSCode, open Terminal (Menu: Terminal > New Terminal)
+2. Copy and paste this command:
+
+   npm install
+
+3. Press Enter and wait for it to finish (may take 1-2 minutes)
+
+
+🚀 STEP 4: START THE APPLICATION
+---------------------------------
+1. In the same terminal, type:
+
+   npm start
+
+2. Press Enter
+3. Wait for the message: "Tenant Management System is running!"
+4. You should see: "Server: http://localhost:3000"
+
+
+🌐 STEP 5: OPEN IN BROWSER
+---------------------------
+1. Open your web browser (Chrome, Firefox, Edge, etc.)
+2. Type this in the address bar:
+
+   localhost:3000
+
+3. Press Enter
+4. You should see the Tenant Management System dashboard!
+
+
+✅ YOU'RE READY TO GO!
+----------------------
+Now you can:
+- Add tenants
+- Add properties
+- Create leases
+- Record payments
+- Upload documents
+- Set up reminders
+
+
+🛑 TO STOP THE SERVER
+---------------------
+1. Go back to VSCode terminal
+2. Press: Ctrl + C
+3. Type: Y (if asked)
+4. Press Enter
+
+
+🔄 TO START AGAIN LATER
+-----------------------
+1. Open VSCode
+2. Open Terminal
+3. Type: npm start
+4. Press Enter
+5. Go to: localhost:3000 in browser
+
+
+❓ TROUBLESHOOTING
+-----------------
+
+Problem: "npm is not recognized"
+Solution: Install Node.js first (Step 1)
+
+Problem: "Port 3000 is already in use"
+Solution: 
+  - Open server.js file
+  - Change line 12: const PORT = 3000;
+  - To: const PORT = 8080;
+  - Save file and restart
+
+Problem: Nothing happens when I run npm start
+Solution:
+  - Make sure you're in the correct folder
+  - Check terminal is at: tenant-management-app
+  - Try: npm install (then npm start again)
+
+
+📞 NEED MORE HELP?
+------------------
+Check the README.md file for detailed information and customization options.
+
+
+🎉 ENJOY YOUR TENANT MANAGEMENT SYSTEM!
+========================================
